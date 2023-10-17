@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Identity;
 using Core.Entities.Identity;
 using Infrastructure.Services;
 using System.Net;
+using API.Middleware;
+using Microsoft.AspNetCore.Mvc;
+using API.Errors;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -46,6 +49,21 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.Configure<ApiBehaviorOptions>(options => {
+    options.InvalidModelStateResponseFactory = ActionContext => {
+        var errors = ActionContext.ModelState
+            .Where(e => e.Value.Errors.Count > 0)
+            .SelectMany(x => x.Value.Errors)
+            .Select(x => x.ErrorMessage).ToArray();
+        
+        var errorsResponse = new ApiValidationErrorResponse{
+            Errors = errors
+        };
+
+        return new BadRequestObjectResult(errorsResponse);
+
+    };
+});
 
 
 
@@ -61,6 +79,10 @@ builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionMiddleware>();
+
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
