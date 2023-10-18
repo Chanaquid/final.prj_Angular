@@ -12,6 +12,10 @@ using System.Net;
 using API.Middleware;
 using Microsoft.AspNetCore.Mvc;
 using API.Errors;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Authentication;
+
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -96,9 +100,15 @@ app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseStaticFiles();
-app.MapControllers();
 
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+    RequestPath = ""
+});
+
+app.MapControllers();
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
@@ -121,6 +131,8 @@ catch (Exception ex)
 }
 
 
-
+Console.WriteLine("Starting app...");
+Console.WriteLine(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/"));
+Console.WriteLine("Finished printing path.");
 
 app.Run();
