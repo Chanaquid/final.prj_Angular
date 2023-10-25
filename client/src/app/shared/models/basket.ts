@@ -20,7 +20,7 @@ export class Basket implements Basket {
   items: BasketItem[] = [];
 }
 
-export interface BasketTotal{
+export interface BasketTotals{
     shipping: number;
     subtotal: number;
     total: number;
