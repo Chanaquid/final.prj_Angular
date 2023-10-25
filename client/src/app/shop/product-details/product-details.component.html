@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" *ngIf="product">
     <div class="col-6">
-      <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="w-100">
+      <img [src] ="env.apiBaseUrl + product.pictureUrl" alt="{{product.name}}" class="w-100">
     </div>
     <div class="col-6 mt-5">
       <h2>{{product.name}}</h2>
