@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
-=======
 import { AbstractControl, AsyncValidatorFn, FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
 import { debounce, debounceTime, finalize, map, switchMap, take } from 'rxjs';
->>>>>>> upstream/main
+
 
 @Component({
   selector: 'app-register',
@@ -13,8 +11,7 @@ import { debounce, debounceTime, finalize, map, switchMap, take } from 'rxjs';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-<<<<<<< HEAD
-=======
+
   errors : string [] | null = null;
 
   constructor(private fb: FormBuilder, private accountService: AccountService,  private router: Router) {}
@@ -49,6 +46,6 @@ export class RegisterComponent {
       )
     }
   }
->>>>>>> upstream/main
+
 
 }
