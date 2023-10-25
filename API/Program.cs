@@ -49,6 +49,7 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductBrandRepository, ProductBrandRepository>();
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
