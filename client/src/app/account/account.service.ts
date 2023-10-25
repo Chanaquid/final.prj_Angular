@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
+
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../shared/models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { BasketService } from '../basket/basket.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class AccountService {
+
+
   baseUrl = environment.apiUrl;
   private currentUserSource = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSource.asObservable();
@@ -17,7 +24,7 @@ export class AccountService {
 
   loadCurrentUser(token: string) {
     let headers = new HttpHeaders();
-    headers = headers.set('Authorizations', `Bearer ${token}`);
+    headers = headers.set('Authorization', `Bearer ${token}`);
 
     return this.http.get<User>(this.baseUrl + 'account', {headers}).pipe(
       map(user => {
@@ -54,5 +61,6 @@ export class AccountService {
   checkEmailExists(email: string){
     return this.http.get<boolean>(this.baseUrl + 'account/emailExists?email=' + email);
   }
+
 
 }

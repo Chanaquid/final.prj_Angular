@@ -4,12 +4,14 @@ import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
 import { debounce, debounceTime, finalize, map, switchMap, take } from 'rxjs';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+
   errors : string [] | null = null;
 
   constructor(private fb: FormBuilder, private accountService: AccountService,  private router: Router) {}
@@ -44,5 +46,6 @@ export class RegisterComponent {
       )
     }
   }
+
 
 }

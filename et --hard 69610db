@@ -1,0 +1,19 @@
+[33m101092d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: checkout: moving from main to main
+[33m101092d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{1}: commit: adding login and register func
+[33m4f8ca3c[m HEAD@{2}: merge upstream/main: Fast-forward
+[33m69610db[m HEAD@{3}: checkout: moving from main to main
+[33m69610db[m HEAD@{4}: commit: configuring swagger
+[33m29432c1[m HEAD@{5}: merge upstream/main: Fast-forward
+[33mfbab6de[m HEAD@{6}: checkout: moving from main to main
+[33mfbab6de[m HEAD@{7}: checkout: moving from main to main
+[33mfbab6de[m HEAD@{8}: commit: fixed imgs not loading
+[33m8b88e03[m HEAD@{9}: checkout: moving from markos-branch to main
+[33m82128f1[m[33m ([m[1;31morigin/markos-branch[m[33m, [m[1;32mmarkos-branch[m[33m)[m HEAD@{10}: checkout: moving from main to markos-branch
+[33m8b88e03[m HEAD@{11}: checkout: moving from markos-branch to main
+[33m82128f1[m[33m ([m[1;31morigin/markos-branch[m[33m, [m[1;32mmarkos-branch[m[33m)[m HEAD@{12}: checkout: moving from main to markos-branch
+[33m8b88e03[m HEAD@{13}: commit: Error handling
+[33ma383f37[m HEAD@{14}: merge upstream/main: Fast-forward
+[33m8d4bc25[m HEAD@{15}: checkout: moving from markos-branch to main
+[33m82128f1[m[33m ([m[1;31morigin/markos-branch[m[33m, [m[1;32mmarkos-branch[m[33m)[m HEAD@{16}: commit: test the pushing
+[33m8d4bc25[m HEAD@{17}: checkout: moving from main to markos-branch
+[33m8d4bc25[m HEAD@{18}: clone: from https://github.com/Chanaquid/final.prj_Angular.git

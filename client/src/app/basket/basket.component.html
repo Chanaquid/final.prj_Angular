@@ -21,7 +21,7 @@
               <tr *ngFor="let item of basket.items">
                 <th>
                   <div class="p-2 d-inline-block">
-                    <img src="{{item.pictureUrl}}" 
+                    <img src="{{ env.apiBaseUrl + item.pictureUrl}}" 
                         alt="{{item.productName}}"
                         class="img-fluid"
                         style="max-height: 50px;">

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { BasketService } from './basket.service';
 import { BasketItem } from '../shared/models/basket';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-basket',
@@ -8,7 +10,7 @@ import { BasketItem } from '../shared/models/basket';
   styleUrls: ['./basket.component.scss']
 })
 export class BasketComponent {
-
+  env = environment;
   constructor(public basketService: BasketService) { }
   
   incrementQuantity(item: BasketItem){
