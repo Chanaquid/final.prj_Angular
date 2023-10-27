@@ -123,6 +123,7 @@ namespace API.Controllers
 
                  //Update properties of the existing product from the provided product
                  existingProduct.Name = product.Name;
+                //  existingProduct.ImageUrl = product.ImageUrl;
                  
                  _productRepository.Update(existingProduct);
                  await _productRepository.SaveChangesAsync();
