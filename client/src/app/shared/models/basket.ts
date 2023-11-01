@@ -7,7 +7,7 @@ export interface BasketItem {
     quantity: number;
     pictureUrl: string;
     brand: string;
-    category: string;
+    type: string;
 }
 
 export interface Basket{

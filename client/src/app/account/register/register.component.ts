@@ -16,7 +16,15 @@ export class RegisterComponent {
 
   constructor(private fb: FormBuilder, private accountService: AccountService,  private router: Router) {}
 
-  complexPassword = "(?=^.{6,10}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$" 
+ 
+  // This regular expression enforces a strong password that must be at least 8 characters long, containing at least one digit, one lowercase letter, one uppercase letter, and one special character from the specified set, with a combination of digits, letters, and special characters.
+
+  complexPassword = "^(?=.*[0-9]+.*)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{\":;'?/>.<,]+).*[0-9a-zA-Z!@#$%^&*()_+}{\":;'?/>.<,]{8,}$"
+
+  //Samples
+  //complexPassword = "^(?=.*[0-9]+.*)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$"
+  //complexPassword = "^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$"
+  //complexPassword = "(?=^.{6,10}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$" 
 
   registerForm = this.fb.group({
     displayName: ['', Validators.required],

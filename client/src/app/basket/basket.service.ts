@@ -5,6 +5,7 @@ import { Basket, BasketItem, BasketTotals } from '../shared/models/basket';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../shared/models/product';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -32,7 +33,8 @@ export class BasketService {
       next: basket => {
         this.basketSource.next(basket);
         this.calculateTotals();
-      }
+      },
+      error: error => console.error('Couldn\'t add product to the basket database', error)
     })
   }
 
@@ -94,7 +96,7 @@ export class BasketService {
       quantity: 0,
       pictureUrl: item.pictureUrl,
       brand: item.productBrand,
-      category: item.category
+      type: item.category
     }
   }
 
