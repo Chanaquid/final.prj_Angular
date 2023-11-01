@@ -34,11 +34,17 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasketDto basket)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var customerBasket = _mapper.Map<CustomerBasketDto, CustomerBasket>(basket);
             var updatedBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
             
             return Ok(updatedBasket);
         }
+
 
         [HttpDelete]
         public async Task DeleteBasketAsync(string id)
