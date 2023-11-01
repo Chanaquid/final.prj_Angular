@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20231025074904_OrderEntityAdded")]
-    partial class OrderEntityAdded
+    [Migration("20231026072258_UpdateEntityAfterDtoChange")]
+    partial class UpdateEntityAfterDtoChange
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
