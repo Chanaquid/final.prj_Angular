@@ -28,10 +28,7 @@ export class CheckoutComponent implements OnInit{
       deliveryMethod: ['',Validators.required]
     }),
     paymentForm: this.fb.group({
-      nameOnCard: ['',Validators.required],
-      cardNumber: ['',Validators.required],
-      expiration: ['',Validators.required],
-      cvv: ['',Validators.required],
+      nameOnCard: ['',Validators.required]
     })
   })
   getAddressFormValues() {
