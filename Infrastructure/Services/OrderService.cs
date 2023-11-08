@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 // using Core.Entities;
 using Core.Entities.OrderAggregate;
 using Core.Interfaces;
 using Core.Specifications;
-using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace Infrastructure.Services
 {
@@ -41,18 +37,32 @@ namespace Infrastructure.Services
             var deliveryMethod = await UnitOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
             // calc subtotal
             var subtotal = items.Sum(item => item.Price * item.Quntity);
-            //create order
-            var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subtotal);
-            await UnitOfWork.Repository<Order>().AddAsync(order);
+
+            //Check to see if order exists
+            var spec = new OrderByPaymentIntentIdSpecification(basket.PaymentIntentId);
+            var order = await UnitOfWork.Repository<Order>().GetEntityWithSpec(spec);
+
+            if(order != null)
+            {
+                order.ShipToAddress = shippingAddress;
+                order.DeliveryMethod = deliveryMethod;
+                order.Subtotal = subtotal;
+                UnitOfWork.Repository<Order>().Update(order);
+            }
+            else
+            {
+                //create order
+                order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subtotal, basket.PaymentIntentId);
+                await UnitOfWork.Repository<Order>().AddAsync(order);
+            }
+
+            
             //TODO: save to db
             var result = await UnitOfWork.Complete();
 
             if (result <= 0){
                 return null;
             }
-
-            //delete basket
-            await BasketRepository.DeleteBasketAsync(basketId);
 
             //return order
             return order;

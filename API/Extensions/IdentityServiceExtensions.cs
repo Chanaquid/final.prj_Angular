@@ -1,7 +1,9 @@
 using System.Net.Http.Headers;
 using System.Text;
 using Core.Entities.Identity;
+using Core.Interfaces;
 using Infrastructure.Identity;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +25,7 @@ namespace API.Extensions
             })
             .AddEntityFrameworkStores<AppIdentityDbContext>()
             .AddSignInManager<SignInManager<AppUser>>();
+            services.AddScoped<IPaymentService, PaymentService>();
 
             // var builder = services.AddIdentityCore<AppUser>();
             
